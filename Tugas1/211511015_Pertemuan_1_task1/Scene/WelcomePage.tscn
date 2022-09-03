@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="WelcomePage" type="Node2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 182.0
+margin_top = 240.0
+margin_right = 308.0
+margin_bottom = 280.0
+rect_scale = Vector2( 7.79202, 5.7562 )
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 13.0
+margin_right = 120.0
+margin_bottom = 27.0
+text = "(none)Light Games"

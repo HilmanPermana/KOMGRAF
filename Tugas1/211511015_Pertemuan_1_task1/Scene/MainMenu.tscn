@@ -1,0 +1,25 @@
+[gd_scene format=2]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BoxMenuText" type="HBoxContainer" parent="."]
+margin_left = 566.0
+margin_top = -0.999996
+margin_right = 606.0
+margin_bottom = 39.0
+rect_scale = Vector2( 5.22893, 3.6302 )
+
+[node name="Label" type="Label" parent="BoxMenuText"]
+margin_top = 13.0
+margin_right = 39.0
+margin_bottom = 27.0
+text = "MENU"
+
+[node name="MenuButton" type="MenuButton" parent="."]
+margin_left = 525.0
+margin_top = 286.0
+margin_right = 537.0
+margin_bottom = 306.0
+rect_scale = Vector2( 23.52, 3.4 )
