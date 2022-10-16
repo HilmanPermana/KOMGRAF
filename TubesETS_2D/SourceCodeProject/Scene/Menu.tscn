@@ -136,7 +136,7 @@ margin_right = 1159.0
 margin_bottom = 607.0
 rect_scale = Vector2( 0.384516, 0.387423 )
 
-[node name="objFlybttn" type="Button" parent="Geometric"]
+[node name="GeoBttn" type="Button" parent="Geometric"]
 margin_right = 657.0
 margin_bottom = 318.0
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -147,7 +147,7 @@ custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 icon = ExtResource( 1 )
 flat = true
 
-[node name="objFlytxt" type="Label" parent="Geometric"]
+[node name="GeoBttn2" type="Label" parent="Geometric"]
 margin_left = 51.0
 margin_top = 93.0
 margin_right = 606.0
@@ -155,3 +155,6 @@ margin_bottom = 224.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "GEOMETRIC"
+
+[connection signal="pressed" from="How To/HowTobttn" to="." method="_on_HowTobttn_pressed"]
+[connection signal="pressed" from="Geometric/GeoBttn" to="." method="_on_GeoBttn_pressed"]
