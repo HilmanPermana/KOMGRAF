@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Aset/Pictures/next-button-icon.png" type="Texture" id=1]
+[ext_resource path="res://Script/Geometric1.gd" type="Script" id=2]
+
+[node name="Geometric1" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1138.0
+margin_top = 596.0
+margin_right = 1662.0
+margin_bottom = 1114.0
+rect_scale = Vector2( 0.211688, 0.197483 )
+icon = ExtResource( 1 )
+flat = true
+
+[node name="BackMenu" type="Button" parent="."]
+margin_left = 143.0
+margin_top = 603.0
+margin_right = 667.0
+margin_bottom = 1121.0
+rect_scale = Vector2( -0.214677, 0.197483 )
+icon = ExtResource( 1 )
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Next2_pressed"]
+[connection signal="pressed" from="BackMenu" to="." method="_on_BackMenu_pressed"]

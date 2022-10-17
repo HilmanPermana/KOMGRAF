@@ -11,4 +11,4 @@ func _on_HowTobttn_pressed():
 
 
 func _on_GeoBttn_pressed():
-	get_tree().change_scene("res://Scene/Geometric.tscn");
+	get_tree().change_scene("res://Scene/Geometric1.tscn");

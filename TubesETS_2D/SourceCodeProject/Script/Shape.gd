@@ -20,7 +20,33 @@ func persegi(start, length, color, type):
 		line_dda(start.x, start.y, start.x, start.y+length, color, type)	
 		# Sisi Kanan
 		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
+		
+func segitiga_ss(start, length, color, type):
+	if type != 'weight':
+	
+		# Sisi Bawah
+		line_dda(start.x, start.y+length, start.x+length, start.y+length, color, type)
+		# Sisi Kiri
+		line_dda(start.x  - 100, start.y, start.x - 50, start.y+length, color, type)	
+		# Sisi Kanan
+		line_dda(start.x+length, start.y, start.x+length, start.y+length, color, type)
+	else:
+		# Sisi Bawah
+		line_dda(start.x-1, start.y+length, start.x+length, start.y+length, color, type)
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+length, color, type)	
+		# Sisi Kanan
+		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
 
+func layang(start, diag1_top, diag1_bottom, diag2, color, type):
+	# Sisi Kiri Atas
+	line_dda(start.x, start.y, start.x+(diag2/2), start.y-diag1_top, color, type)
+	# Sisi Kiri Bawah
+	line_dda(start.x, start.y, start.x+(diag2/2), start.y+diag1_bottom, color, type)
+	# Sisi Kanan Atas
+	line_dda(start.x+diag2, start.y, start.x+(diag2/2), start.y-diag1_top, color, type)
+	# Sisi Kanan Bawah
+	line_dda(start.x+diag2, start.y, start.x+(diag2/2), start.y+diag1_bottom, color, type)
 
 	
 func segi_lebihdari4(radius, sisi, center, theta, color):
@@ -34,9 +60,9 @@ func segi_lebihdari4(radius, sisi, center, theta, color):
 		
 	for i in sisi:
 		if i == sisi - 1:
-			line_dda(x[i], y[i], x[0], y[0], color, "normal")
+			line_dda(x[i], y[i], x[0], y[0], color, "weight")
 		else:
-			line_dda(x[i], y[i], x[i+1], y[i+1], color, "normal")
+			line_dda(x[i], y[i], x[i+1], y[i+1], color, "weight")
 	
 func segi_lebihdari4_translation(radius, sisi, center, theta, color, tx, ty):
 	var matrix = init_matrix(m_width, m_height)
@@ -86,9 +112,9 @@ func segi_lebihdari4_scale(radius, sisi, center, theta, color, sx, sy, refpt):
 		
 	for i in sisi:
 		if i == sisi - 1:
-			line_dda(x[i], y[i], x[0], y[0], color, "normal")
+			line_dda(x[i], y[i], x[0], y[0], color, "weight")
 		else:
-			line_dda(x[i], y[i], x[i+1], y[i+1], color, "normal")
+			line_dda(x[i], y[i], x[i+1], y[i+1], color, "weight")
 
 func segi_lebihdari4_rotate(radius, sisi, center, theta, color, degree, refpt):
 	var matrix = init_matrix(m_width, m_height)
@@ -112,11 +138,27 @@ func segi_lebihdari4_rotate(radius, sisi, center, theta, color, degree, refpt):
 		
 	for i in sisi:
 		if i == sisi - 1:
-			line_dda(x[i], y[i], x[0], y[0], color, "normal")
+			line_dda(x[i], y[i], x[0], y[0], color, "weight")
 		else:
-			line_dda(x[i], y[i], x[i+1], y[i+1], color, "normal")
+			line_dda(x[i], y[i], x[i+1], y[i+1], color, "weight")
 			
-
+func lingkaran(x_center, y_center, radius, color):
+	var x = 0
+	var y = radius
+	var p = 1 - radius
+	
+	lingkaran_plot_points(x_center, y_center, x, y, color)
+	
+	while x < y:
+		x += 1
+		if p < 0:
+			p += 2 * x + 1
+		else:
+			y -= 1
+			p += 2 * (x - y) + 1
+		
+		lingkaran_plot_points(x_center, y_center, x, y, color)
+		
 func lingkaran_translation(x_center, y_center, radius, color, tx, ty):
 	var matrix = init_matrix(m_width, m_height)
 	matrix_identitas(matrix)
@@ -143,6 +185,7 @@ func lingkaran_translation(x_center, y_center, radius, color, tx, ty):
 		lingkaran_plot_points(matrix[0][2], matrix[1][2], x, y, color)
 
 func lingkaran_plot_points(x_center, y_center, x, y, color):
+	
 	put_pixel(x_center+x, y_center+y, color)
 	put_pixel(x_center-x, y_center+y, color)
 	put_pixel(x_center+x, y_center-y, color)
