@@ -20,24 +20,40 @@ func persegi(start, length, color, type):
 		line_dda(start.x, start.y, start.x, start.y+length, color, type)	
 		# Sisi Kanan
 		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
-		
-func segitiga_ss(start, length, color, type):
-	if type != 'weight':
-	
-		# Sisi Bawah
-		line_dda(start.x, start.y+length, start.x+length, start.y+length, color, type)
-		# Sisi Kiri
-		line_dda(start.x  - 100, start.y, start.x - 50, start.y+length, color, type)	
-		# Sisi Kanan
-		line_dda(start.x+length, start.y, start.x+length, start.y+length, color, type)
-	else:
-		# Sisi Bawah
-		line_dda(start.x-1, start.y+length, start.x+length, start.y+length, color, type)
-		# Sisi Kiri
-		line_dda(start.x, start.y, start.x, start.y+length, color, type)	
-		# Sisi Kanan
-		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
 
+func segitiga_siku(start, base, height, color, type):
+	if type != 'weight':
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x, start.y, start.x+base, start.y+height, color, type)
+	else:
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x-1, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x, start.y, start.x+base, start.y+height, color, type)
+
+func segitiga_ss(start, base, height, color, type):
+	
+	if type != 'weight':
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x, start.y, start.x+base, start.y+height, color, type)
+	else:
+		# Sisi Kiri
+		line_dda(start.x + 100, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x-1, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x + 100, start.y, start.x + 200, start.y+height, color, type)
+		
 func layang(start, diag1_top, diag1_bottom, diag2, color, type):
 	# Sisi Kiri Atas
 	line_dda(start.x, start.y, start.x+(diag2/2), start.y-diag1_top, color, type)
