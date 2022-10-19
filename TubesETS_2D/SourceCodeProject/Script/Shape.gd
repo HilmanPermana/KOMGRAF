@@ -21,22 +21,15 @@ func persegi(start, length, color, type):
 		# Sisi Kanan
 		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
 		
-func segitiga_ss(start, length, color, type):
-	if type != 'weight':
-	
-		# Sisi Bawah
-		line_dda(start.x, start.y+length, start.x+length, start.y+length, color, type)
-		# Sisi Kiri
-		line_dda(start.x  - 100, start.y, start.x - 50, start.y+length, color, type)	
-		# Sisi Kanan
-		line_dda(start.x+length, start.y, start.x+length, start.y+length, color, type)
-	else:
-		# Sisi Bawah
-		line_dda(start.x-1, start.y+length, start.x+length, start.y+length, color, type)
-		# Sisi Kiri
-		line_dda(start.x, start.y, start.x, start.y+length, color, type)	
-		# Sisi Kanan
-		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
+func segitiga_sembarang():
+	var titik_awal = Vector2(310,450)
+	var panjang_sisi = 130
+
+	var res = PoolVector2Array()
+	res.append_array(line_dda(titik_awal.x - 60 , titik_awal.y, titik_awal.x + panjang_sisi, titik_awal.y, Color.gold, "weight")) #sisi atas
+	res.append_array(line_dda(titik_awal.x - 60, titik_awal.y, titik_awal.x + panjang_sisi/2, titik_awal.y + panjang_sisi, Color.gold, "weight")) #sisi kiri
+	res.append_array(line_dda(titik_awal.x + panjang_sisi, titik_awal.y, titik_awal.x + panjang_sisi/2 , titik_awal.y + panjang_sisi, Color.gold, "weight")) #sisi kanan
+	return res
 
 func layang(start, diag1_top, diag1_bottom, diag2, color, type):
 	# Sisi Kiri Atas

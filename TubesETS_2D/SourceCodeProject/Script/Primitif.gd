@@ -10,6 +10,9 @@ extends Node2D
 func put_pixel(x, y, color):
 	draw_primitive(PoolVector2Array([Vector2(x, y)]), PoolColorArray([color]), PoolVector2Array())
 
+func put_pixel_all(dot: PoolVector2Array, color):
+	for i in dot.size():
+		put_pixel(dot[i].x, dot[i].y, color)
 
 #====MATRIX=======#
 
