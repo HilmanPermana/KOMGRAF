@@ -20,6 +20,7 @@ func persegi(start, length, color, type):
 		line_dda(start.x, start.y, start.x, start.y+length, color, type)	
 		# Sisi Kanan
 		line_dda(start.x+length-1, start.y, start.x+length-1, start.y+length, color, type)
+<<<<<<< HEAD
 		
 func segitiga_sembarang():
 	var titik_awal = Vector2(310,450)
@@ -30,7 +31,42 @@ func segitiga_sembarang():
 	res.append_array(line_dda(titik_awal.x - 60, titik_awal.y, titik_awal.x + panjang_sisi/2, titik_awal.y + panjang_sisi, Color.gold, "weight")) #sisi kiri
 	res.append_array(line_dda(titik_awal.x + panjang_sisi, titik_awal.y, titik_awal.x + panjang_sisi/2 , titik_awal.y + panjang_sisi, Color.gold, "weight")) #sisi kanan
 	return res
+=======
+>>>>>>> origin
 
+func segitiga_siku(start, base, height, color, type):
+	if type != 'weight':
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x, start.y, start.x+base, start.y+height, color, type)
+	else:
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x-1, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x, start.y, start.x+base, start.y+height, color, type)
+
+func segitiga_ss(start, base, height, color, type):
+	
+	if type != 'weight':
+		# Sisi Kiri
+		line_dda(start.x, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x, start.y, start.x+base, start.y+height, color, type)
+	else:
+		# Sisi Kiri
+		line_dda(start.x + 100, start.y, start.x, start.y+height, color, type)
+		# Sisi Bawah
+		line_dda(start.x-1, start.y+height, start.x+base, start.y+height, color, type)
+		# Sisi Miring
+		line_dda(start.x + 100, start.y, start.x + 200, start.y+height, color, type)
+		
 func layang(start, diag1_top, diag1_bottom, diag2, color, type):
 	# Sisi Kiri Atas
 	line_dda(start.x, start.y, start.x+(diag2/2), start.y-diag1_top, color, type)
