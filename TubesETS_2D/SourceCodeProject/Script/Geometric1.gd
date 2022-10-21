@@ -1,4 +1,4 @@
-extends 'res://Script/Shape.gd'
+extends 'res://Script/ShapeTransformation.gd'
 
 
 func _ready():

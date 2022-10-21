@@ -230,7 +230,7 @@ func persegi_panjang_rotate(start, length, width, color, degree, refpt):
 	d = matrix[1][2]
 	line_dda(a, b, c, d, color, "normal")
 	
-func persegi_panjang_composite(start, length, width, color, transform_el):
+func persegi_composite(start, length, width, color, transform_el):
 	var matrix = init_matrix(3, 3)
 	matrix_identitas(matrix)
 	var a
@@ -326,6 +326,101 @@ func persegi_panjang_composite(start, length, width, color, transform_el):
 	d = matrix[1][2]
 	line_dda(a, b, c, d, color, "normal")
 
+func jajargenjang_composite(start, length, width, color, transform_el):
+	var matrix = init_matrix(3, 3)
+	matrix_identitas(matrix)
+	var a
+	var b
+	var c
+	var d
+	
+	# Sisi Atas
+	matrix[0][2] = start.x
+	matrix[1][2] = start.y
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	a = matrix[0][2]
+	b = matrix[1][2]
+	
+	matrix[0][2] = start.x+length
+	matrix[1][2] = start.y
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	c = matrix[0][2]
+	d = matrix[1][2]
+	line_dda(a + 50, b, c + 50, d, color, "normal")
+	
+	# Sisi Bawah
+	matrix[0][2] = start.x
+	matrix[1][2] = start.y+width
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	a = matrix[0][2]
+	b = matrix[1][2]
+	
+	matrix[0][2] = start.x+length
+	matrix[1][2] = start.y+width
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	c = matrix[0][2]
+	d = matrix[1][2]
+	line_dda(a, b, c, d, color, "normal")
+	
+	# Sisi Kiri
+	matrix[0][2] = start.x
+	matrix[1][2] = start.y
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	a = matrix[0][2]
+	b = matrix[1][2]
+	
+	matrix[0][2] = start.x
+	matrix[1][2] = start.y+width
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	c = matrix[0][2]
+	d = matrix[1][2]
+	line_dda(a + 50, b, c, d, color, "normal")
+	
+	# Sisi Kanan
+	matrix[0][2] = start.x+length
+	matrix[1][2] = start.y
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	a = matrix[0][2]
+	b = matrix[1][2]
+	
+	matrix[0][2] = start.x+length
+	matrix[1][2] = start.y+width
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	c = matrix[0][2]
+	d = matrix[1][2]
+	line_dda(a + 50, b, c, d, color, "normal")
 	
 ###POLYGON###
 func segi_lebihdari4_translation(radius, sisi, center, theta, color, tx, ty):
@@ -528,7 +623,69 @@ func segitiga_sama_kaki_rotate(start, base, height, color, degree, refpt):
 	line_dda(base_start_x, base_start_y, hypo_x, hypo_y, color, "normal")
 	line_dda(base_end_x, base_end_y, hypo_x, hypo_y, color, "normal")
 	
-func segitiga_sama_kaki_composite(start, base, height, color, transform_el):
+func segitiga_composite(start, base, height, color, type, transform_el):
+	var matrix = init_matrix(m_width, m_height)
+	matrix_identitas(matrix)
+	
+	# Transformation Process
+	matrix[0][2] = start.x
+	matrix[1][2] = start.y
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	var base_start_x = matrix[0][2]
+	var base_start_y = matrix[1][2]
+	
+	matrix_identitas(matrix)
+	matrix[0][2] = start.x+base
+	matrix[1][2] = start.y
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	var base_end_x = matrix[0][2]
+	var base_end_y = matrix[1][2]
+	
+	# Rotation Process Hypotenusa
+	matrix_identitas(matrix)
+	matrix[0][2] = start.x+(base/2)
+	matrix[1][2] = start.y-height
+	for idx in range(0, transform_el.size()):
+		if(transform_el[idx][0] == "Translation"):
+			matrix = translation(matrix, transform_el[idx][1], transform_el[idx][2])
+		elif(transform_el[idx][0] == "Rotation"):
+			matrix = rotateM(matrix, transform_el[idx][1], transform_el[idx][2])
+	var hypo_x = matrix[0][2]
+	var hypo_y = matrix[1][2]
+	
+	if(type == "sikukanan"):
+		# Base
+		line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
+		
+		# Hypotenusa
+		line_dda(base_start_x, base_start_y, hypo_x + 45, hypo_y, color, "normal")
+		line_dda(base_end_x, base_end_y, hypo_x + 45, hypo_y, color, "normal")
+		
+	elif(type == "sikukiri"):
+		# Base
+		line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
+		
+		# Hypotenusa
+		line_dda(base_start_x, base_start_y, hypo_x - 75, hypo_y, color, "normal")
+		line_dda(base_end_x, base_end_y, hypo_x - 75, hypo_y, color, "normal")
+		
+	else: #sama kaki or sama sisi
+		# Base
+		line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
+		
+		# Hypotenusa
+		line_dda(base_start_x, base_start_y, hypo_x, hypo_y, color, "normal")
+		line_dda(base_end_x, base_end_y, hypo_x, hypo_y, color, "normal")
+		
+func segitiga_siku_composite(start, base, height, color, type, transform_el):
 	var matrix = init_matrix(m_width, m_height)
 	matrix_identitas(matrix)
 	
@@ -568,108 +725,10 @@ func segitiga_sama_kaki_composite(start, base, height, color, transform_el):
 	
 	# Base
 	line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
-	
-	# Hypotenusa
-	line_dda(base_start_x, base_start_y, hypo_x, hypo_y, color, "normal")
-	line_dda(base_end_x, base_end_y, hypo_x, hypo_y, color, "normal")
-
-func segitiga_siku_rotate(start, base, height, color, type, degree, refpt):
-	var matrix = init_matrix(m_width, m_height)
-	matrix_identitas(matrix)
-	
-	# Rotation Process Base
-	matrix[0][2] = start.x
-	matrix[1][2] = start.y
-	if (typeof(degree) != 19):
-		matrix = rotateM(matrix, degree, refpt)
-	else:
-		for idx in range (0, degree.size()):
-			matrix = rotateM(matrix, degree[idx], refpt[idx])
-	var base_start_x = matrix[0][2]
-	var base_start_y = matrix[1][2]
-	
-	matrix_identitas(matrix)
-	matrix[0][2] = start.x+base
-	matrix[1][2] = start.y
-	if (typeof(degree) != 19):
-		matrix = rotateM(matrix, degree, refpt)
-	else:
-		for idx in range (0, degree.size()):
-			matrix = rotateM(matrix, degree[idx], refpt[idx])
-	var base_end_x = matrix[0][2]
-	var base_end_y = matrix[1][2]
-	
-	# Rotation Process Hypotenusa
-	matrix_identitas(matrix)
-	matrix[0][2] = start.x+(base/2)
-	matrix[1][2] = start.y-height
-	if (typeof(degree) != 19):
-		matrix = rotateM(matrix, degree, refpt)
-	else:
-		for idx in range (0, degree.size()):
-			matrix = rotateM(matrix, degree[idx], refpt[idx])
-	var hypo_x = matrix[0][2]
-	var hypo_y = matrix[1][2]
-	
-	if(type == "kanan"):
-		# Base
-		line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
-		
-		# Hypotenusa
-		line_dda(base_start_x, base_start_y, hypo_x + 50, hypo_y, color, "normal")
-		line_dda(base_end_x, base_end_y, hypo_x + 50, hypo_y, color, "normal")
-	elif(type == "kiri"):
-		# Base
-		line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
-		
-		# Hypotenusa
-		line_dda(base_start_x, base_start_y, hypo_x - 50, hypo_y, color, "normal")
-		line_dda(base_end_x, base_end_y, hypo_x - 50, hypo_y, color, "normal")
-		
-func segitiga_ss_rotate(start, base, height, color, degree, refpt):
-	var matrix = init_matrix(m_width, m_height)
-	matrix_identitas(matrix)
-	
-	# Rotation Process Base
-	matrix[0][2] = start.x
-	matrix[1][2] = start.y
-	if (typeof(degree) != 19):
-		matrix = rotateM(matrix, degree, refpt)
-	else:
-		for idx in range (0, degree.size()):
-			matrix = rotateM(matrix, degree[idx], refpt[idx])
-	var base_start_x = matrix[0][2]
-	var base_start_y = matrix[1][2]
-	
-	matrix_identitas(matrix)
-	matrix[0][2] = start.x+base
-	matrix[1][2] = start.y
-	if (typeof(degree) != 19):
-		matrix = rotateM(matrix, degree, refpt)
-	else:
-		for idx in range (0, degree.size()):
-			matrix = rotateM(matrix, degree[idx], refpt[idx])
-	var base_end_x = matrix[0][2]
-	var base_end_y = matrix[1][2]
-	
-	# Rotation Process Hypotenusa
-	matrix_identitas(matrix)
-	matrix[0][2] = start.x+(base/2)
-	matrix[1][2] = start.y-height
-	if (typeof(degree) != 19):
-		matrix = rotateM(matrix, degree, refpt)
-	else:
-		for idx in range (0, degree.size()):
-			matrix = rotateM(matrix, degree[idx], refpt[idx])
-	var hypo_x = matrix[0][2]
-	var hypo_y = matrix[1][2]
-
-	# Base
-	line_dda(base_start_x, base_start_y, base_end_x, base_end_y, color, "normal")
 		
 	# Hypotenusa
-	line_dda(base_start_x, base_start_y, hypo_x, hypo_y, color, "normal")
-	line_dda(base_end_x, base_end_y, hypo_x, hypo_y, color, "normal")
+	line_dda(base_start_x, base_start_y, hypo_x, hypo_y - 35, color, "normal")
+	line_dda(base_end_x, base_end_y, hypo_x, hypo_y - 35, color, "normal")
 		
 
 ###LINGKARAN###
