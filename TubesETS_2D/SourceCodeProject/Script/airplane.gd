@@ -4,12 +4,12 @@ extends 'res://Script/ShapeTransformation.gd'
 func _ready():
 	VisualServer.set_default_clear_color(Color.skyblue)
 	
-func _draw():
-	
 	var x = 1270
 	var y = 440
 	
-	
+func _draw():
+	var x = 1270
+	var y = 440
 	jajargenjang_composite(Vector2(x - 245, y - 130), 100, 60, Color.black, [["Rotation", 0, Vector2(x,y)], ["Translation", 0, 0]])
 	segitiga_composite(Vector2(x , y), 250, 100, Color.black, "ss", [["Rotation", 270, Vector2(x,y)], ["Translation", 0, 0]])
 	segitiga_composite(Vector2(x -150 , y - 64), 100, 60, Color.black, "ss", [["Rotation", 0, Vector2(x,y)], ["Translation", 0, 0]])

@@ -166,7 +166,25 @@ func ellips_plot_points(xCenter, yCenter, x, y, color):
 	put_pixel(xCenter - x, yCenter + y, color)
 	put_pixel(xCenter + x, yCenter - y, color)
 	put_pixel(xCenter - x, yCenter - y, color)
-
+	
+func ellips_half_plot_points(xCenter, yCenter, x, y, color, type):
+	
+	if(type == "left"):
+		put_pixel(xCenter - x, yCenter + y, color)
+		put_pixel(xCenter - x, yCenter - y, color)
+		
+	elif(type == "bottom"):
+		put_pixel(xCenter + x, yCenter + y, color)
+		put_pixel(xCenter - x, yCenter + y, color)
+		
+	elif(type == "right"):
+		put_pixel(xCenter + x, yCenter + y, color)
+		put_pixel(xCenter + x, yCenter - y, color)
+		
+	else:
+		put_pixel(xCenter + x, yCenter - y, color)
+		put_pixel(xCenter - x, yCenter - y, color)
+	
 func ellips_plot_points_rotation(xCenter, yCenter, x, y, color, degree, refpt):
 	var matrix = init_matrix(m_width, m_height)
 	matrix_identitas(matrix)

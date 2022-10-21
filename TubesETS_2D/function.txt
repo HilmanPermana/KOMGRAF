@@ -1,0 +1,20 @@
+Fungsi ShapeTransformasi Godot :
+1. line_dda_rotate
+2. line_dda_composite
+3. persegi_translate
+4. persegi_composite
+5. persegi_rotate
+6. persegi_panjang_rotate
+7. jajargenjang_composite
+8. polygon_translation
+9. polygon_scale
+10. polygon_rotate
+11. segi_banyak_composite
+12. segitiga_sama_kaki_translate
+13. segitiga_sama_kaki_rotate
+14. segitiga_composite
+15. segitiga_siku_composite
+15. lingkaran_translation
+16. ellips_translation
+17. ellips_rotation
+18. ellips_plot_points_rotation
