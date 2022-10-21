@@ -3,7 +3,7 @@ extends 'res://Script/ShapeTransformation.gd'
 func _ready():
 	VisualServer.set_default_clear_color(Color.skyblue)
 	
-func cloud_animation(now_position):
+func cloud_animation1(now_position):
 	
 	#awan atas
 	ellips_half_translate(100, 130, 60, 30, Color.black, "left",  now_position.x, 0)

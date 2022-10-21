@@ -156,5 +156,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "GEOMETRIC"
 
+[connection signal="pressed" from="Identity/Identitybttn" to="." method="_on_Identitybttn_pressed"]
 [connection signal="pressed" from="How To/HowTobttn" to="." method="_on_HowTobttn_pressed"]
+[connection signal="pressed" from="Object Fly/objFlybttn" to="." method="_on_objFlybttn_pressed"]
 [connection signal="pressed" from="Geometric/GeoBttn" to="." method="_on_GeoBttn_pressed"]
