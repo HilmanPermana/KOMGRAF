@@ -10,4 +10,4 @@ func _on_Identitybttn_pressed():
 
 
 func _on_objFlybttn_pressed():
-	get_tree().change_scene("res://Scene/Animation.tscn");
+	get_tree().change_scene("res://Scene/World.tscn.tscn");
