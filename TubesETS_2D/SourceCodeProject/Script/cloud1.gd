@@ -1,18 +1,5 @@
 extends 'res://Script/ShapeTransformation.gd'
-
-
-const move = 3
-var now_position = Vector2(0, 0)
-
-func _physics_process(delta):
-	now_position.x += move
-	if(now_position.x >= 600):
-		get_tree().reload_current_scene()
-	
-		
-
-	
-	update()
+var now_position = Vector2(0,0)
 
 func _draw():
 	ellips_half_translate(100, 130, 60, 30, Color.black, "left",  now_position.x, 0)
@@ -36,11 +23,7 @@ func _draw():
 	ellips_half_translate(810, 650, 40, 20, Color.black, "bottom",  now_position.x, 0)
 	ellips_half_translate(840, 628, 40, 38, Color.black, "right",  now_position.x, 0)
 	
-	
-	
-
-func cloud_animation2(now_position):
-	
+#AWAN KEDUA
 	#awan atas
 	ellips_half_translate(400, 230, 60, 30, Color.black, "left",  now_position.x, 0)
 	ellips_half_translate(440, 260, 60, 30, Color.black, "bottom",  now_position.x, 0)
@@ -52,7 +35,7 @@ func cloud_animation2(now_position):
 	ellips_half_translate(710, 250, 40, 20, Color.black, "bottom",  now_position.x, 0)
 	ellips_half_translate(740, 228, 40, 38, Color.black, "right",  now_position.x, 0)
 	
-	#awan atas
+	#awan bawah
 	ellips_half_translate(100, 430, 60, 30, Color.black, "left",  now_position.x, 0)
 	ellips_half_translate(140, 460, 60, 30, Color.black, "bottom",  now_position.x, 0)
 	ellips_half_translate(240, 490, 90, 30, Color.black, "bottom",  now_position.x, 0)
@@ -61,4 +44,5 @@ func cloud_animation2(now_position):
 	ellips_half_translate(370, 400, 75, 30, Color.black, "top", now_position.x, 0)
 	ellips_half_translate(350, 470, 40, 20, Color.black, "bottom",  now_position.x, 0)
 	ellips_half_translate(410, 450, 40, 20, Color.black, "bottom",  now_position.x, 0)
-	
+	ellips_half_translate(440, 428, 40, 38, Color.black, "right",  now_position.x, 0)
+

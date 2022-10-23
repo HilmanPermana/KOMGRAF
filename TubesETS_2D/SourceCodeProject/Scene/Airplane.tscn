@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Scene/Airplane.gd" type="Script" id=1]
+[ext_resource path="res://Script/Airplane.gd" type="Script" id=1]
 
 [node name="Airplane" type="Node2D"]
+position = Vector2( 1277, 0 )
 script = ExtResource( 1 )
